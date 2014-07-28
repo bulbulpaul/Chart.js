@@ -701,13 +701,17 @@
 		retinaScale = helpers.retinaScale = function(chart){
 			var ctx = chart.ctx,
 				width = chart.canvas.width,
-				height = chart.canvas.height;
+				height = chart.canvas.height,
+				style = chart.canvas.style;
 			//console.log(width + " x " + height);
 			if (window.devicePixelRatio) {
-				ctx.canvas.style.width = width + "px";
-				ctx.canvas.style.height = height + "px";
-				ctx.canvas.height = height * window.devicePixelRatio;
-				ctx.canvas.width = width * window.devicePixelRatio;
+				if (style.width.length == 0) style.width = width + "px";
+				if (Number(style.width.substring(0, style.width.indexOf('px')))
+					!= width * window.devicePixelRatio) ctx.canvas.width = width * window.devicePixelRatio;
+
+				if (style.height.length == 0) style.height = height + "px";
+				if (Number(style.height.substring(0, style.height.indexOf('px')))
+					!= height * window.devicePixelRatio) ctx.canvas.height = height * window.devicePixelRatio;
 				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 			}
 		},
