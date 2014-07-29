@@ -705,10 +705,10 @@
 				style = chart.canvas.style;
 			//console.log(width + " x " + height);
 			if (window.devicePixelRatio) {
-				if (style.width.length == 0) style.width = width + "px";
-				if (style.height.length == 0) style.height = height + "px";
-				if (Number(/\d+(?=px)/.exec(style.width)) * window.devicePixelRatio != width 
-					&& Number(/\d+(?=px)/.exec(style.height)) * window.devicePixelRatio != height) {
+				if (style.width.length === 0) style.width = width + "px";
+				if (style.height.length === 0) style.height = height + "px";
+				if (Number(/\d+(?=px)/.exec(style.width)) * window.devicePixelRatio != width && 
+					Number(/\d+(?=px)/.exec(style.height)) * window.devicePixelRatio != height) {
 					ctx.canvas.width = chart.width = width * window.devicePixelRatio;
 					ctx.canvas.height = chart.height =  height * window.devicePixelRatio;
 				}
