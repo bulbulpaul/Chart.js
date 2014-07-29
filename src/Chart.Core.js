@@ -1356,6 +1356,7 @@
 	Chart.Scale = Chart.Element.extend({
 		initialize : function(){
 			this.fit();
+			if (window.devicePixelRatio) this.font.replace(/\d+(?=px)/, Number(/\d+(?=px)/.exec(this.font)) * window.devicePixelRatio);
 		},
 		buildYLabels : function(){
 			this.yLabels = [];
